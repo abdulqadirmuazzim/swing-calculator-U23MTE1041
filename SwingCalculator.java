@@ -6,27 +6,30 @@ import java.awt.event.ActionListener;
 
 public class SwingCalculator extends JFrame implements ActionListener {
     // Components
-    private JTextField textField;
-    private JButton[] numberButtons = new JButton[10];
-    private JButton[] functionButtons = new JButton[8];
-    private JButton addButton, subButton, mulButton, divButton;
-    private JButton decButton, equButton, delButton, clrButton;
-    private JPanel panel;
+    JTextField textField;
+    JButton[] numberButtons = new JButton[10];
+    JButton[] functionButtons = new JButton[8];
+    JButton addButton, subButton, mulButton, divButton;
+    JButton decButton, equButton, delButton, clrButton;
+    JPanel panel;
 
     // Variables
-    private double num1 = 0, num2 = 0, result = 0;
-    private char operator;
+    double num1 = 0, num2 = 0, result = 0;
+    char operator;
+    Font myFont = new Font("Sans serif", Font.BOLD, 25);
+    Font textFont = new Font("Roboto", Font.BOLD, 20);
 
     public SwingCalculator() {
         // Frame setup
-        setTitle("Calculator");
+        setTitle("Mechatronics Group 4");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(400, 550);
+        setSize(420, 550);
         setLayout(null);
 
         // TextField
         textField = new JTextField();
         textField.setBounds(50, 25, 300, 50);
+        textField.setFont(textFont);
         textField.setEditable(false);
         add(textField);
 
@@ -37,8 +40,8 @@ public class SwingCalculator extends JFrame implements ActionListener {
         divButton = new JButton("/");
         decButton = new JButton(".");
         equButton = new JButton("=");
-        delButton = new JButton("DEL");
-        clrButton = new JButton("CLR");
+        delButton = new JButton("Delete");
+        clrButton = new JButton("Clear");
 
         functionButtons[0] = addButton;
         functionButtons[1] = subButton;
@@ -51,14 +54,14 @@ public class SwingCalculator extends JFrame implements ActionListener {
 
         for (int i = 0; i < functionButtons.length; i++) {
             functionButtons[i].addActionListener(this);
-            functionButtons[i].setFont(new Font("Arial", Font.BOLD, 18));
+            functionButtons[i].setFont(myFont);
             functionButtons[i].setFocusable(false);
         }
 
         for (int i = 0; i < numberButtons.length; i++) {
             numberButtons[i] = new JButton(String.valueOf(i));
             numberButtons[i].addActionListener(this);
-            numberButtons[i].setFont(new Font("Arial", Font.BOLD, 18));
+            numberButtons[i].setFont(myFont);
             numberButtons[i].setFocusable(false);
         }
 
